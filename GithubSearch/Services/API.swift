@@ -12,7 +12,9 @@ import Alamofire
 enum API {
     case getUsers(query: String)
     case getSingleUser(userName: String)
-    
+}
+
+extension API {
     var method: HTTPMethod {
         switch self {
         case .getUsers, .getSingleUser: return .get
