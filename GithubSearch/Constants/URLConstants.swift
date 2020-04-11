@@ -8,6 +8,6 @@
 
 import Foundation
 
-class URLConstants {
-    public static var BASE_URL: String = "https://api.github.com"
+struct URLConstants {
+    static let BASE_URL: String = "https://api.github.com"
 }
