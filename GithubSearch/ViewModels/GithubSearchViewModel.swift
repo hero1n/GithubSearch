@@ -47,6 +47,16 @@ extension GithubSearchViewModel: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let item = self.items[indexPath.section]
+        
+        switch item.type {
+        case .user:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: GithubSearchUserCell.identifier) as? GithubSearchUserCell,
+                let item = item as? GithubSearchViewModelUserItem {
+                return cell
+            }
+        }
+        
         return UITableViewCell()
     }
 }

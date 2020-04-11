@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="100" width="414" height="762"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="74" id="1lY-h3-WTK">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GithubSearchUserCell" rowHeight="74" id="1lY-h3-WTK" customClass="GithubSearchUserCell" customModule="GithubSearch" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1lY-h3-WTK" id="bMh-iL-FFK">
@@ -66,6 +66,11 @@
                                                 <constraint firstAttribute="bottom" secondItem="gjp-xl-daW" secondAttribute="bottom" constant="16" id="tP5-q7-om8"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="profileImageView" destination="bVH-ke-Vlt" id="cWC-RY-8aE"/>
+                                            <outlet property="repoCountLabel" destination="hbl-aw-pMq" id="cXa-s3-Nti"/>
+                                            <outlet property="userNameLabel" destination="bSY-mF-GBZ" id="bcc-R2-GTf"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
