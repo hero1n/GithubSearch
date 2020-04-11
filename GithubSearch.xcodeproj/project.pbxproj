@@ -91,8 +91,8 @@
 				E8DCF9C324419D59009B8381 /* GithubSearchViewController.swift */,
 				E8DCF9C824419D5A009B8381 /* Assets.xcassets */,
 				E8DCF9CA24419D5A009B8381 /* LaunchScreen.storyboard */,
-				E8DCF9C524419D59009B8381 /* Search.storyboard */,
 				E8DCF9D32441AF54009B8381 /* Services */,
+				E8ED25392441D42900C40917 /* Storyboards */,
 				E8ED252D2441BF7C00C40917 /* Utilities */,
 				E8ED25302441C6D300C40917 /* ViewModels */,
 			);
@@ -129,6 +129,14 @@
 				E8ED25312441C6F800C40917 /* GithubSearchViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		E8ED25392441D42900C40917 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				E8DCF9C524419D59009B8381 /* Search.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
