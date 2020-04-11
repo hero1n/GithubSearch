@@ -9,8 +9,20 @@
 import UIKit
 
 class GithubSearchViewController: UIViewController {
+    
+    @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet var tableView: UITableView!
+    
+    fileprivate let viewModel = GithubSearchViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.configure()
+    }
+    
+    private func configure() {
+        self.tableView.delegate = self.viewModel
+        self.tableView.dataSource = self.viewModel
     }
 }
