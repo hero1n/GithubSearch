@@ -17,6 +17,7 @@
 		E8ED252F2441BF9300C40917 /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED252E2441BF9300C40917 /* Debugging.swift */; };
 		E8ED25322441C6F800C40917 /* GithubSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED25312441C6F800C40917 /* GithubSearchViewModel.swift */; };
 		E8ED253C2441D4E300C40917 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED253B2441D4E300C40917 /* UITableViewCell.swift */; };
+		E8ED253E2441EF9900C40917 /* AlamofireUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED253D2441EF9900C40917 /* AlamofireUtil.swift */; };
 		F4BFB3F096DF1AE309C485AA /* Pods_GithubSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95B798C3CF17348625CDB8E /* Pods_GithubSearch.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		E8ED252E2441BF9300C40917 /* Debugging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debugging.swift; sourceTree = "<group>"; };
 		E8ED25312441C6F800C40917 /* GithubSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubSearchViewModel.swift; sourceTree = "<group>"; };
 		E8ED253B2441D4E300C40917 /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
+		E8ED253D2441EF9900C40917 /* AlamofireUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 		E8ED252D2441BF7C00C40917 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				E8ED253D2441EF9900C40917 /* AlamofireUtil.swift */,
 				E8ED252E2441BF9300C40917 /* Debugging.swift */,
 			);
 			path = Utilities;
@@ -269,6 +272,7 @@
 				E8ED253C2441D4E300C40917 /* UITableViewCell.swift in Sources */,
 				E8DCF9C424419D59009B8381 /* GithubSearchViewController.swift in Sources */,
 				E8ED252B2441B0F900C40917 /* URLConstants.swift in Sources */,
+				E8ED253E2441EF9900C40917 /* AlamofireUtil.swift in Sources */,
 				E8ED252F2441BF9300C40917 /* Debugging.swift in Sources */,
 				E8DCF9D52441AF7A009B8381 /* API.swift in Sources */,
 				E8DCF9C024419D59009B8381 /* AppDelegate.swift in Sources */,
