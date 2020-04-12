@@ -20,6 +20,7 @@
 		E8ED253E2441EF9900C40917 /* AlamofireUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED253D2441EF9900C40917 /* AlamofireUtil.swift */; };
 		E8ED25402442FBCF00C40917 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED253F2442FBCF00C40917 /* UIImage.swift */; };
 		E8ED25422442FBFB00C40917 /* UISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED25412442FBFB00C40917 /* UISearchBar.swift */; };
+		E8ED25442443090000C40917 /* RequestChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED25432443090000C40917 /* RequestChain.swift */; };
 		F4BFB3F096DF1AE309C485AA /* Pods_GithubSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95B798C3CF17348625CDB8E /* Pods_GithubSearch.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		E8ED253D2441EF9900C40917 /* AlamofireUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireUtil.swift; sourceTree = "<group>"; };
 		E8ED253F2442FBCF00C40917 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		E8ED25412442FBFB00C40917 /* UISearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBar.swift; sourceTree = "<group>"; };
+		E8ED25432443090000C40917 /* RequestChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestChain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 			children = (
 				E8ED253D2441EF9900C40917 /* AlamofireUtil.swift */,
 				E8ED252E2441BF9300C40917 /* Debugging.swift */,
+				E8ED25432443090000C40917 /* RequestChain.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				E8ED252F2441BF9300C40917 /* Debugging.swift in Sources */,
 				E8DCF9D52441AF7A009B8381 /* API.swift in Sources */,
 				E8DCF9C024419D59009B8381 /* AppDelegate.swift in Sources */,
+				E8ED25442443090000C40917 /* RequestChain.swift in Sources */,
 				E8ED25322441C6F800C40917 /* GithubSearchViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
