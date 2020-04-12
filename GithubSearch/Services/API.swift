@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 enum API {
-    case getUsers(query: String)
+    case getUsers(query: String, page: Int)
     case getSingleUser(userName: String)
 }
 
@@ -30,8 +30,8 @@ extension API {
     
     var parameters: Parameters {
         switch self {
-        case .getUsers(let query):
-            return ["q": query]
+        case .getUsers(let query, let page):
+            return ["q": "\(query)", "page": "\(page)", "per_page": "20"]
         default:
             return [:]
         }
