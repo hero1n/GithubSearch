@@ -23,7 +23,12 @@ class GithubSearchViewController: UIViewController {
     
     private func configure() {
         self.navigationItem.title = "Github Users"
+        
+        self.viewModel.viewController = self
+        
         self.tableView.delegate = self.viewModel
         self.tableView.dataSource = self.viewModel
+        
+        self.searchBar.delegate = self.viewModel
     }
 }

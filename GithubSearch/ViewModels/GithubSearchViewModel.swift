@@ -42,9 +42,29 @@ class GithubSearchViewModelUserItem: GithubSearchViewModelItem {
 
 class GithubSearchViewModel: NSObject {
     private var items = [GithubSearchViewModelItem]()
+    private var page = 1
+    
+    weak var viewController: GithubSearchViewController?
     
     override init() {
         super.init()
+    }
+    
+    @objc func search(_ searchBar: UISearchBar) {
+        self.items.removeAll()
+        self.viewController?.tableView.reloadData()
+        
+        guard let query = searchBar.text, query.trimmingCharacters(in: .whitespaces) != "" else {
+            return
+        }
+        
+    }
+
+extension GithubSearchViewModel: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.search(_:)), object: searchBar)
+        
+        perform(#selector(self.search(_:)), with: searchBar, afterDelay: 0.5)
     }
 }
 
