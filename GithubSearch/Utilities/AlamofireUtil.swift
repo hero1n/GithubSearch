@@ -27,8 +27,18 @@ class AlamofireUtil {
                                     headers: HTTPHeaders? = nil,
                                     onSuccess: @escaping (_ response: T) -> (),
                                     onError: @escaping (_ error: Error) -> ()) {
+        
+        guard #available(iOS 13, *) else {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            return
+        }
+        
         self.getDataRequest(api, headers: headers)
             .responseObject { (dataResponse: DataResponse<T>) in
+                guard #available(iOS 13, *) else {
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                    return
+                }
                 switch dataResponse.result {
                 case .success(let data):
                     onSuccess(data)
