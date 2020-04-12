@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 protocol GithubSearchCell {
     var item: GithubSearchViewModelItem? { get }
@@ -33,6 +34,7 @@ class GithubSearchUserCell: UITableViewCell, GithubSearchCell {
         didSet {
             guard let user = self.user else { return }
             
+            self.profileImageView?.kf.setImage(with: URL(string: user.avatarURL ?? ""))
             self.userNameLabel.text = user.userName
             self.repoCountLabel.text = "Number of repos: \(user.repoCount ?? 0)"
         }
@@ -42,6 +44,7 @@ class GithubSearchUserCell: UITableViewCell, GithubSearchCell {
         super.awakeFromNib()
         
         self.selectionStyle = .none
+        self.profileImageView.layer.cornerRadius = self.profileImageView.frame.height / 2
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
