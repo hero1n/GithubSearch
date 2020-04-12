@@ -41,6 +41,7 @@ class GithubSearchModel {
     }
     
     class UserDetail: Mappable {
+        var id: Int?
         var repoCount: Int?
         
         required init?(map: Map) {
@@ -49,6 +50,7 @@ class GithubSearchModel {
         
         func mapping(map: Map) {
             print(debug: map.JSON)
+            self.id <- map["id"]
             self.repoCount <- map["public_repos"]
         }
     }
