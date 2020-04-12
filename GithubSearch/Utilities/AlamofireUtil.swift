@@ -14,13 +14,15 @@ import AlamofireObjectMapper
 class AlamofireUtil {
     static let shared: AlamofireUtil = AlamofireUtil()
     
+    let defaultHeader = ["Authorization": BasicConstants.GITHUB_TOKEN]
+    
     func getDataRequest(_ api: API,
                         headers: HTTPHeaders? = nil) -> DataRequest {
         return Alamofire.request(api.url,
                                  method: api.method,
                                  parameters: api.parameters,
                                  encoding: URLEncoding.default,
-                                 headers: headers)
+                                 headers: headers ?? self.defaultHeader)
     }
     
     func requestObject<T: Mappable>(_ api: API,
