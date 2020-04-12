@@ -9,5 +9,6 @@ target 'GithubSearch' do
   pod 'Alamofire', '~> 4.7'
   pod 'ObjectMapper', '~> 3.5'
   pod 'AlamofireObjectMapper', '~> 5.2.1'
+  pod 'Kingfisher'
 
 end
