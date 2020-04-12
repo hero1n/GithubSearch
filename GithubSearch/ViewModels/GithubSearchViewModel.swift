@@ -27,10 +27,21 @@ class GithubSearchViewModelUserItem: GithubSearchViewModelItem {
     var type: GithubSearchViewModelItemType {
         return .user
     }
+    
+    var rowCount: Int {
+        return self.users.count
+    }
+    
+    var users: [GithubSearchModel.User] = []
+    
+    init(_ userList: GithubSearchModel.UserList) {
+        guard let userItems = userList.items else { return }
+        self.users = userItems.map { GithubSearchModel.User(user: $0) }
+    }
 }
 
 class GithubSearchViewModel: NSObject {
-    var items = [GithubSearchViewModelItem]()
+    private var items = [GithubSearchViewModelItem]()
     
     override init() {
         super.init()
