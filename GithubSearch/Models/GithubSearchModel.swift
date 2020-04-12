@@ -18,7 +18,6 @@ class GithubSearchModel {
         }
         
         func mapping(map: Map) {
-            print(debug: map.JSON)
             self.items <- map["items"]
         }
     }
@@ -33,7 +32,6 @@ class GithubSearchModel {
         }
         
         func mapping(map: Map) {
-            print(debug: map.JSON)
             self.id <- map["id"]
             self.userName <- map["login"]
             self.avatarURL <- map["avatar_url"]
@@ -49,7 +47,6 @@ class GithubSearchModel {
         }
         
         func mapping(map: Map) {
-            print(debug: map.JSON)
             self.id <- map["id"]
             self.repoCount <- map["public_repos"]
         }
