@@ -17,6 +17,7 @@
 		E8ED252F2441BF9300C40917 /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED252E2441BF9300C40917 /* Debugging.swift */; };
 		E8ED25322441C6F800C40917 /* GithubSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED25312441C6F800C40917 /* GithubSearchViewModel.swift */; };
 		E8ED25352441C8C600C40917 /* GithubSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED25342441C8C600C40917 /* GithubSearchModel.swift */; };
+		E8ED25382441D1FA00C40917 /* GithubSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED25372441D1FA00C40917 /* GithubSearchCell.swift */; };
 		E8ED253C2441D4E300C40917 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED253B2441D4E300C40917 /* UITableViewCell.swift */; };
 		E8ED253E2441EF9900C40917 /* AlamofireUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED253D2441EF9900C40917 /* AlamofireUtil.swift */; };
 		E8ED25402442FBCF00C40917 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED253F2442FBCF00C40917 /* UIImage.swift */; };
@@ -41,6 +42,7 @@
 		E8ED252E2441BF9300C40917 /* Debugging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debugging.swift; sourceTree = "<group>"; };
 		E8ED25312441C6F800C40917 /* GithubSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubSearchViewModel.swift; sourceTree = "<group>"; };
 		E8ED25342441C8C600C40917 /* GithubSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubSearchModel.swift; sourceTree = "<group>"; };
+		E8ED25372441D1FA00C40917 /* GithubSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubSearchCell.swift; sourceTree = "<group>"; };
 		E8ED253B2441D4E300C40917 /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
 		E8ED253D2441EF9900C40917 /* AlamofireUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireUtil.swift; sourceTree = "<group>"; };
 		E8ED253F2442FBCF00C40917 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				E8DCF9C324419D59009B8381 /* GithubSearchViewController.swift */,
 				E8DCF9C824419D5A009B8381 /* Assets.xcassets */,
 				E8DCF9CA24419D5A009B8381 /* LaunchScreen.storyboard */,
+				E8ED25362441CE3C00C40917 /* Cells */,
 				E8ED25292441B02700C40917 /* Constants */,
 				E8ED253A2441D4D500C40917 /* Extensions */,
 				E8ED25332441C8B000C40917 /* Models */,
@@ -154,6 +157,14 @@
 				E8ED25342441C8C600C40917 /* GithubSearchModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		E8ED25362441CE3C00C40917 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E8ED25372441D1FA00C40917 /* GithubSearchCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		E8ED25392441D42900C40917 /* Storyboards */ = {
@@ -293,6 +304,7 @@
 				E8ED25402442FBCF00C40917 /* UIImage.swift in Sources */,
 				E8DCF9C424419D59009B8381 /* GithubSearchViewController.swift in Sources */,
 				E8ED252B2441B0F900C40917 /* URLConstants.swift in Sources */,
+				E8ED25382441D1FA00C40917 /* GithubSearchCell.swift in Sources */,
 				E8ED25422442FBFB00C40917 /* UISearchBar.swift in Sources */,
 				E8ED253E2441EF9900C40917 /* AlamofireUtil.swift in Sources */,
 				E8ED252F2441BF9300C40917 /* Debugging.swift in Sources */,

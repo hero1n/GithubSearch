@@ -28,10 +28,20 @@ class GithubSearchUserCell: UITableViewCell, GithubSearchCell {
     @IBOutlet var profileImageView: UIImageView!
     @IBOutlet var userNameLabel: UILabel!
     @IBOutlet var repoCountLabel: UILabel!
+    
+    var user: GithubSearchModel.User? {
+        didSet {
+            guard let user = self.user else { return }
+            
+            self.userNameLabel.text = user.userName
+            self.repoCountLabel.text = "Number of repos: \(user.repoCount ?? 0)"
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        self.selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
