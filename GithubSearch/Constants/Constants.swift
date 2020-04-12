@@ -11,3 +11,8 @@ import Foundation
 struct URLConstants {
     static let BASE_URL: String = "https://api.github.com"
 }
+
+struct BasicConstants {
+    // OAuth token
+    static let GITHUB_TOKEN: String = ""
+}
