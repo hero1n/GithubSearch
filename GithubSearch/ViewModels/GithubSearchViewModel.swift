@@ -152,6 +152,10 @@ extension GithubSearchViewModel: UISearchBarDelegate {
         
         perform(#selector(self.search(_:)), with: searchBar, afterDelay: 0.5)
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.hideKeyboard()
+    }
 }
 
 extension GithubSearchViewModel: UITableViewDataSource {
