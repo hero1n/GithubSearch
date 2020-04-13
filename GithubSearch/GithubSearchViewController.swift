@@ -28,7 +28,10 @@ class GithubSearchViewController: UIViewController {
         
         self.tableView.delegate = self.viewModel
         self.tableView.dataSource = self.viewModel
-        self.tableView.tableFooterView = UIView()
+        
+        let spinner = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+        spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: self.tableView.bounds.width, height: CGFloat(44))
+        self.tableView.tableFooterView = spinner
         
         self.searchBar.delegate = self.viewModel
     }

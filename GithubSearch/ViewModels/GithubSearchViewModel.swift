@@ -54,11 +54,19 @@ class GithubSearchViewModel: NSObject {
     }
     
     func showSearchBarIndicator() {
-        self.viewController?.searchBar.isLoading = true
+        if self.items.count == 0 {
+            self.viewController?.searchBar.isLoading = true
+        } else {
+            (self.viewController?.tableView.tableFooterView as? UIActivityIndicatorView)?.startAnimating()
+        }
     }
     
     func hideSearchBarIndicator() {
-        self.viewController?.searchBar.isLoading = false
+        if self.items.count == 0 {
+            self.viewController?.searchBar.isLoading = false
+        } else {
+            (self.viewController?.tableView.tableFooterView as? UIActivityIndicatorView)?.stopAnimating()
+        }
     }
     
     func hideKeyboard() {
@@ -212,6 +220,8 @@ extension GithubSearchViewModel: UITableViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.hideKeyboard()
+        
+        let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
         
         if offsetY > contentHeight - scrollView.frame.size.height && !self.savedQuery.isEmpty {
