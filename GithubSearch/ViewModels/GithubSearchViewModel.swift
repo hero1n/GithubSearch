@@ -53,7 +53,7 @@ class GithubSearchViewModel: NSObject {
         super.init()
     }
     
-    func showSearchBarIndicator() {
+    func showActivityIndicator() {
         if self.items.count == 0 {
             self.viewController?.searchBar.isLoading = true
         } else {
@@ -61,7 +61,7 @@ class GithubSearchViewModel: NSObject {
         }
     }
     
-    func hideSearchBarIndicator() {
+    func hideActivityIndicator() {
         if self.items.count == 0 {
             self.viewController?.searchBar.isLoading = false
         } else {
@@ -83,7 +83,7 @@ class GithubSearchViewModel: NSObject {
         
         guard let query = searchBar.text, query.trimmingCharacters(in: .whitespaces) != "" else {
             self.savedQuery = ""
-            self.hideSearchBarIndicator()
+            self.hideActivityIndicator()
             return
         }
         
@@ -93,7 +93,7 @@ class GithubSearchViewModel: NSObject {
     }
     
     private func fetchUsers(query: String) {
-        self.showSearchBarIndicator()
+        self.showActivityIndicator()
         SessionManager.default.startRequestsImmediately = true
         
         AlamofireUtil.shared.requestObject(
@@ -101,13 +101,13 @@ class GithubSearchViewModel: NSObject {
             onSuccess: { (response: GithubSearchModel.UserList) in
                 self.fetchUserDetails(userList: response)
         }, onError: { (error) in
-            self.hideSearchBarIndicator()
+            self.hideActivityIndicator()
         })
     }
     
     private func fetchUserDetails(userList: GithubSearchModel.UserList) {
         guard let userItems = userList.items else { return }
-        self.showSearchBarIndicator()
+        self.showActivityIndicator()
         SessionManager.default.startRequestsImmediately = false
         
         var userDetails: [GithubSearchModel.UserDetail] = []
@@ -124,7 +124,7 @@ class GithubSearchViewModel: NSObject {
                             userDetails.append(data)
                             
                             if userDetails.count == userItems.count {
-                                self.hideSearchBarIndicator()
+                                self.hideActivityIndicator()
                                 self.setData(userDetails: userDetails, with: userList)
                             }
                         case .failure:
@@ -134,7 +134,7 @@ class GithubSearchViewModel: NSObject {
                 }
             } else {
                 print(debug: error?.error ?? "")
-                self.hideSearchBarIndicator()
+                self.hideActivityIndicator()
             }
         }
     }
