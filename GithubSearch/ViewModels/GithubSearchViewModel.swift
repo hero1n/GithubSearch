@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireObjectMapper
 
 enum GithubSearchViewModelItemType {
     case user
@@ -34,9 +36,8 @@ class GithubSearchViewModelUserItem: GithubSearchViewModelItem {
     
     var users: [GithubSearchModel.User] = []
     
-    init(_ userList: GithubSearchModel.UserList) {
-        guard let userItems = userList.items else { return }
-        self.users = userItems.map { GithubSearchModel.User(user: $0) }
+    init(_ users: [GithubSearchModel.User]) {
+        self.users = users
     }
 }
 
@@ -50,15 +51,94 @@ class GithubSearchViewModel: NSObject {
         super.init()
     }
     
+    func showSearchBarIndicator() {
+        self.viewController?.searchBar.isLoading = true
+    }
+    
+    func hideSearchBarIndicator() {
+        self.viewController?.searchBar.isLoading = false
+    }
+    
     @objc func search(_ searchBar: UISearchBar) {
         self.items.removeAll()
         self.viewController?.tableView.reloadData()
         
         guard let query = searchBar.text, query.trimmingCharacters(in: .whitespaces) != "" else {
+            self.hideSearchBarIndicator()
             return
         }
         
+        self.fetchUsers(query: query)
     }
+    
+    private func fetchUsers(query: String) {
+        self.showSearchBarIndicator()
+        SessionManager.default.startRequestsImmediately = true
+        
+        AlamofireUtil.shared.requestObject(
+            .getUsers(query: query, page: self.page),
+            onSuccess: { (response: GithubSearchModel.UserList) in
+                self.fetchUserDetails(userList: response)
+        }, onError: { (error) in
+            self.hideSearchBarIndicator()
+        })
+    }
+    
+    private func fetchUserDetails(userList: GithubSearchModel.UserList) {
+        guard let userItems = userList.items else { return }
+        self.showSearchBarIndicator()
+        SessionManager.default.startRequestsImmediately = false
+        
+        var userDetails: [GithubSearchModel.UserDetail] = []
+        let userNames = userItems.compactMap { $0.userName }
+        let requests = userNames.map { AlamofireUtil.shared.getDataRequest(.getSingleUser(userName: $0)) }
+        let requestChain = RequestChain(requests: requests)
+        
+        requestChain.start { (done, error) in
+            if done {
+                requests.forEach {
+                    $0.responseObject { (response: DataResponse<GithubSearchModel.UserDetail>) in
+                        switch response.result {
+                        case .success(let data):
+                            userDetails.append(data)
+                            
+                            if userDetails.count == userItems.count {
+                                self.hideSearchBarIndicator()
+                                self.setData(userDetails: userDetails, with: userList)
+                            }
+                        case .failure:
+                            return
+                        }
+                    }
+                }
+            } else {
+                print(debug: error?.error ?? "")
+                self.hideSearchBarIndicator()
+            }
+        }
+    }
+    
+    private func setData(userDetails: [GithubSearchModel.UserDetail], with userList: GithubSearchModel.UserList) {
+        guard let userItems = userList.items else { return }
+        let users: [GithubSearchModel.User] = userItems.compactMap { GithubSearchModel.User(user: $0) }
+        
+        userDetails.forEach { (data) in
+            users.first { data.id == $0.id }?.repoCount = data.repoCount
+        }
+
+        self.updateData(users: users)
+    }
+    
+    private func updateData(users: [GithubSearchModel.User]) {
+        if self.items.count == 0 {
+            self.items.append(GithubSearchViewModelUserItem(users))
+        } else if let userViewModelItem = self.items.first(where: { $0 is GithubSearchViewModelUserItem }) as? GithubSearchViewModelUserItem {
+            userViewModelItem.users.append(contentsOf: users)
+        }
+        
+        self.viewController?.tableView.reloadData()
+    }
+}
 
 extension GithubSearchViewModel: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
