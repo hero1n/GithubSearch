@@ -57,6 +57,7 @@ class GithubSearchViewModel: NSObject {
         if self.items.count == 0 {
             self.viewController?.searchBar.isLoading = true
         } else {
+            self.viewController?.tableView.tableFooterView?.isHidden = false
             (self.viewController?.tableView.tableFooterView as? UIActivityIndicatorView)?.startAnimating()
         }
     }
@@ -65,6 +66,7 @@ class GithubSearchViewModel: NSObject {
         if self.items.count == 0 {
             self.viewController?.searchBar.isLoading = false
         } else {
+            self.viewController?.tableView.tableFooterView?.isHidden = true
             (self.viewController?.tableView.tableFooterView as? UIActivityIndicatorView)?.stopAnimating()
         }
     }
@@ -197,6 +199,7 @@ extension GithubSearchViewModel: UITableViewDataSource {
             noDataLabel.textAlignment = .center
             noDataLabel.numberOfLines = 0
             
+            tableView.tableFooterView?.isHidden = true
             tableView.separatorStyle = .none
             tableView.backgroundView = noDataLabel
         }
