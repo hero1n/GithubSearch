@@ -164,6 +164,7 @@ extension GithubSearchViewModel: UITableViewDataSource {
         case .user:
             if let cell = tableView.dequeueReusableCell(withIdentifier: GithubSearchUserCell.identifier) as? GithubSearchUserCell,
                 let item = item as? GithubSearchViewModelUserItem {
+                cell.user = item.users[indexPath.row]
                 return cell
             }
         }
