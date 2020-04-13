@@ -92,7 +92,17 @@ class GithubSearchViewModel: NSObject {
         self.fetchUsers(query: query)
     }
     
+    private func stopAllSessions() {
+        let sessionManager = Alamofire.SessionManager.default
+        sessionManager.session.getTasksWithCompletionHandler { dataTasks, uploadTasks, downloadTasks in
+            dataTasks.forEach { $0.cancel() }
+            uploadTasks.forEach { $0.cancel() }
+            downloadTasks.forEach { $0.cancel() }
+        }
+    }
+    
     private func fetchUsers(query: String) {
+        self.stopAllSessions()
         self.showActivityIndicator()
         SessionManager.default.startRequestsImmediately = true
         
@@ -101,6 +111,7 @@ class GithubSearchViewModel: NSObject {
             onSuccess: { (response: GithubSearchModel.UserList) in
                 self.fetchUserDetails(userList: response)
         }, onError: { (error) in
+            print(debug: error)
             self.hideActivityIndicator()
         })
     }
