@@ -160,6 +160,20 @@ extension GithubSearchViewModel: UISearchBarDelegate {
 
 extension GithubSearchViewModel: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
+        if self.items.count > 0 {
+            tableView.separatorStyle = .singleLine
+            tableView.backgroundView = nil
+        } else {
+            let noDataLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+            noDataLabel.text = "검색된 결과가 없습니다.\n위 검색 창에서 검색해주세요."
+            noDataLabel.textColor = UIColor.black
+            noDataLabel.textAlignment = .center
+            noDataLabel.numberOfLines = 0
+            
+            tableView.separatorStyle = .none
+            tableView.backgroundView = noDataLabel
+        }
+        
         return self.items.count
     }
     

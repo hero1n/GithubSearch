@@ -28,6 +28,7 @@ class GithubSearchViewController: UIViewController {
         
         self.tableView.delegate = self.viewModel
         self.tableView.dataSource = self.viewModel
+        self.tableView.tableFooterView = UIView()
         
         self.searchBar.delegate = self.viewModel
     }
