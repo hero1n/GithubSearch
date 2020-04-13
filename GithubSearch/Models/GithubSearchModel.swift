@@ -11,6 +11,7 @@ import ObjectMapper
 
 class GithubSearchModel {
     class UserList: Mappable {
+        var totalCount: Int?
         var items: [UserItem]?
         
         required init?(map: Map) {
@@ -18,6 +19,7 @@ class GithubSearchModel {
         }
         
         func mapping(map: Map) {
+            self.totalCount <- map["total_count"]
             self.items <- map["items"]
         }
     }
