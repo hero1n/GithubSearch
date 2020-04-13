@@ -59,6 +59,12 @@ class GithubSearchViewModel: NSObject {
         self.viewController?.searchBar.isLoading = false
     }
     
+    func hideKeyboard() {
+        if self.viewController?.searchBar.isFirstResponder == true {
+            self.viewController?.view.endEditing(true)
+        }
+    }
+    
     @objc func search(_ searchBar: UISearchBar) {
         self.items.removeAll()
         self.viewController?.tableView.reloadData()
@@ -175,6 +181,10 @@ extension GithubSearchViewModel: UITableViewDataSource {
 
 extension GithubSearchViewModel: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        self.hideKeyboard()
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.hideKeyboard()
     }
 }
